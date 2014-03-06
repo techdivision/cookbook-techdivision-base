@@ -1,10 +1,11 @@
-name             'techdivision-locales'
+name             'techdivision-base'
 maintainer       'Robert Lemke'
 maintainer_email 'r.lemke@techdivision.com'
 license          'MIT'
-description      'Generates and sets locales for Ubuntu / Debian servers'
+description      'Base cookbook for TechDivision servers'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.0'
+version          '0.1.1'
 
-supports "ubuntu"
 supports "debian"
+
+depends "techdivision-ssh"
