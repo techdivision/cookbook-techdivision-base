@@ -14,14 +14,14 @@ execute "locale-gen" do
 	command "locale-gen --purge"
 end
 
-case node['platform_family']
+case node["platform_family"]
 when "debian"
 	file "/etc/locale.gen" do
 		action :create
 		owner "root"
 		group "root"
 		mode "0644"
-		content node['techdivision-locales']['locales'].join("\n") + "\n"
+		content node["techdivision-base"]["locales"].join("\n") + "\n"
 		notifies :run, "execute[locale-gen]", :immediate
 	end
 else
@@ -34,7 +34,7 @@ else
 		owner "root"
 		group "root"
 		mode "0644"
-		content node['techdivision-locales']['locales'].join("\n") + "\n"
+		content node["techdivision-base"]["locales"].join("\n") + "\n"
 		notifies :run, "execute[locale-gen]", :immediate
 	end
 end
@@ -43,3 +43,10 @@ end
 # Authorized Keys
 #
 
+administrators = search(:administrators)
+administrators.each do |administrator|
+  techdivision_ssh_authorized_keys_entry administrator["emailAddress"] do
+    key administrator["sshKey"]
+    user "root"
+  end
+end
