@@ -59,6 +59,10 @@ package "ca-certificates" do
   action :install
 end
 
+package "sudo" do
+  action :install
+end
+
 package "zip" do
   action :install
 end
