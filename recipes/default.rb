@@ -70,3 +70,15 @@ end
 package "mc" do
   action :install
 end
+
+#
+# Vagrant support
+#
+
+if node["vagrant"] do
+  group "www-data" do
+    action :manage
+    append true
+    members "vagrant"
+  end
+end
