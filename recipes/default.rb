@@ -75,7 +75,7 @@ end
 # Vagrant support
 #
 
-if node["vagrant"] do
+if node["vagrant"] then
   group "www-data" do
     action :manage
     append true
