@@ -72,6 +72,12 @@ package "mc" do
 end
 
 #
+# Enable ACL support
+#
+
+techdivision_base_acl "/"
+
+#
 # Vagrant support
 #
 
