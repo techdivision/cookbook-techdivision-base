@@ -71,6 +71,24 @@ package "mc" do
   action :install
 end
 
+package "zsh" do
+  action :install
+end
+
+#
+# ZSH for "root"
+#
+
+template "zshrc.erb" do
+  cookbook "techdivision-base"
+  path "/root/.zshrc"
+  source "zshrc.erb"
+  owner "vagrant"
+  group "vagrant"
+  mode "0644"
+end
+
+
 #
 # Enable ACL support
 #
@@ -87,4 +105,14 @@ if node["vagrant"] then
     append true
     members "vagrant"
   end
+
+  template "zshrc.erb" do
+    cookbook "techdivision-base"
+    path "/home/vagrant/.zshrc"
+    source "zshrc.erb"
+    owner "vagrant"
+    group "vagrant"
+    mode "0644"
+  end
+
 end
