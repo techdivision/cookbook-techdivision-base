@@ -100,6 +100,11 @@ techdivision_base_acl "/"
 #
 
 if node["vagrant"] then
+
+  user "vagrant" do
+    shell "/bin/zsh"
+  end
+
   group "www-data" do
     action :manage
     append true
