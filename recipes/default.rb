@@ -75,6 +75,10 @@ package "zsh" do
   action :install
 end
 
+package "ntp" do
+  action :install
+end
+
 #
 # ZSH for "root"
 #
